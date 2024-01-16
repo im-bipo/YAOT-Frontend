@@ -5,30 +5,27 @@ import "./Event.scss";
 import Card from "./Components/Card";
 
 const Event = () => {
-  const [data, setData] = useState();
+  const [Events, setEvents] = useState();
 
   useEffect(() => {
     axios
       .get("api/event")
       .then((res) => {
-        setData(res.data);
+        setEvents(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
 
-  console.log(data);
-  console.log("..");
-
-  if (!data) {
+  if (!Events) {
     return (
       <div>
         <h1>loadion..</h1>
       </div>
     );
   }
-  if (data) {
+  if (Events) {
     return (
       <div>
         <div className="event-container">
@@ -39,39 +36,15 @@ const Event = () => {
 
           <section className="event-list">
             <div className="cards">
-              <Card
-                title="Web Development Workshop"
-                status="Upcoming"
-                author="Your Organization"
-                rating={5}
-              />
-              <Card
-                title="Web Development Workshop"
-                status="Upcoming"
-                author="Your Organization"
-                rating={5}
-              />
-              <Card
-                title="Web Development Workshop"
-                status="Upcoming"
-                author="Your Organization"
-                rating={5}
-              />
-
-              <Card
-                title="Another Event"
-                status="Upcoming"
-                author="Your Organization"
-                rating={4}
-              />
-              <Card
-                title="Another Event"
-                status="Upcoming"
-                author="Your Organization"
-                rating={4}
-              />
+              {Events.map((event) => {
+                return (
+                  <Card
+                    key={event._id}
+                    eventDetails={event}
+                  />
+                );
+              })}
             </div>
-            {/* Add more FeaturedCard components for additional events */}
           </section>
         </div>
       </div>
