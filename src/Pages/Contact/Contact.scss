@@ -1,0 +1,72 @@
+// Contact.scss
+
+.contact-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px;
+  }
+  
+  .contact-header {
+    text-align: center;
+    color: #333;
+  
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+  
+    .sub-heading {
+      color: #555;
+      font-size: 1.5rem;
+      font-style: italic;
+    }
+  }
+  
+  .contact-form {
+    max-width: 600px;
+    margin: 40px auto;
+  
+    form {
+      display: grid;
+      gap: 20px;
+  
+      .form-group {
+        label {
+          display: block;
+          font-size: 1.2rem;
+          margin-bottom: 8px;
+          color: #333;
+        }
+  
+        input,
+        textarea {
+          width: 100%;
+          padding: 10px;
+          font-size: 1rem;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        }
+  
+        textarea {
+          resize: vertical;
+        }
+      }
+  
+      button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: background-color 0.3s ease-in-out;
+  
+        &:hover {
+          background-color: #0056b3;
+        }
+      }
+    }
+  }
+  

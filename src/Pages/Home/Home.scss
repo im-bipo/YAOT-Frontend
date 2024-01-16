@@ -1,0 +1,32 @@
+// Home.scss
+
+.home-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px;
+}
+
+.hero-section {
+  text-align: center;
+  color: #333;
+
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+  }
+
+  .sub-heading {
+    color: #555;
+    font-size: 1.5rem;
+  }
+}
+
+.featured-section {
+  margin-top: 40px;
+
+  h2 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+}
