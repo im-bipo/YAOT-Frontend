@@ -8,8 +8,9 @@ import Event from "./Pages/Event/Event.jsx";
 import Contact from "./Pages/Contact/Contact.jsx";
 import About from "./Pages/About/About.jsx";
 import Certificate from "./Pages/Certificate/Certificate.jsx";
-import NotFound from "./Pages/NotFound/NotFound.jsx";
+import PageNotFound from "./Pages/PageNotFound/PageNotFound.jsx";
 import CertificatePage from "./Pages/Certificate/CertificatePage/CertificatePage.jsx";
+import EventDetails from "./Pages/Event/EventDetails/EventDetails.jsx";
 
 const App = () => {
   return (
@@ -21,11 +22,15 @@ const App = () => {
         <Route path="/about" element={<About />} />
 
         <Route path="/event" element={<Event />} />
+        <Route path="/event/:eventName" element={<EventDetails />} />
+        <Route path="/event/:eventName/register" element={<EventDetails />} />
+        
         <Route path="/contact" element={<Contact />} />
+
         <Route path="/certificate" element={<Certificate />} />
         <Route path="/certificate/:certificateId" element={<CertificatePage />} />
 
-        <Route path="/*" element={<NotFound />} />
+        <Route path="/*" element={<PageNotFound />} />
       </Routes>
     </>
   );
