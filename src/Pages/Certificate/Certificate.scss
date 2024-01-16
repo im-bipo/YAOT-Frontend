@@ -1,0 +1,71 @@
+// CertificateVerification.scss
+
+.verification-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 40px;
+  }
+  
+  .verification-header {
+    text-align: center;
+    color: #333;
+  
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+  
+    .sub-heading {
+      color: #555;
+      font-size: 1.2rem;
+    }
+  }
+  
+  .verification-form {
+    margin-top: 30px;
+  
+    label {
+      display: block;
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+      color: #333;
+    }
+  
+    .input-group {
+      display: flex;
+  
+      input {
+        flex: 1;
+        padding: 10px;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 4px 0 0 4px;
+      }
+  
+      button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1rem;
+        cursor: pointer;
+        border-radius: 0 4px 4px 0;
+        transition: background-color 0.3s ease-in-out;
+  
+        &:hover {
+          background-color: #0056b3;
+        }
+      }
+    }
+  
+    .verification-result {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #dff0d8;
+      border: 1px solid #d0e9c6;
+      color: #3c763d;
+      border-radius: 4px;
+    }
+  }
+  

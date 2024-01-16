@@ -1,0 +1,56 @@
+// About.scss
+
+.about-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px;
+}
+
+.about-header {
+  text-align: center;
+  color: #333;
+
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+
+  .sub-heading {
+    color: #555;
+    font-size: 1.5rem;
+    font-style: italic;
+  }
+}
+
+.about-content {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+
+  .about-text {
+    max-width: 600px;
+
+    p {
+      color: #444;
+      margin-bottom: 20px;
+      line-height: 1.6;
+      font-size: 1.2rem;
+    }
+  }
+
+  .about-image {
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 600px;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+  }
+}
