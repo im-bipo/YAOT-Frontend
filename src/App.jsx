@@ -11,6 +11,7 @@ import Certificate from "./Pages/Certificate/Certificate.jsx";
 import PageNotFound from "./Pages/PageNotFound/PageNotFound.jsx";
 import CertificatePage from "./Pages/Certificate/CertificatePage/CertificatePage.jsx";
 import EventDetails from "./Pages/Event/EventDetails/EventDetails.jsx";
+import EventRegestration from "./Pages/Event/EventRegestration/EventRegestration.jsx";
 
 const App = () => {
   return (
@@ -23,7 +24,7 @@ const App = () => {
 
         <Route path="/event" element={<Event />} />
         <Route path="/event/:eventName" element={<EventDetails />} />
-        <Route path="/event/:eventName/register" element={<EventDetails />} />
+        <Route path="/event/:eventName/register" element={<EventRegestration />} />
         
         <Route path="/contact" element={<Contact />} />
 
