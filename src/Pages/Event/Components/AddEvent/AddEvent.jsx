@@ -1,7 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 
 const AddEvent = () => {
-  
+  const [data, setData] = useState({
+    name: "",
+    date: "",
+    mentor: "",
+    time: "",
+    decs: "",
+    image: null,
+  });
+
+  const handleChange = (e) => {
+    const name = e.target.name;
+    if (name === "image") {
+      const value = e.target.files[0];
+      setData({ ...data, [name]: value });
+    } else {
+      const value = e.target.value;
+      setData({ ...data, [name]: value });
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append("name", data.name);
+    formData.append("date", data.date);
+    formData.append("time", data.time);
+    formData.append("mentor", data.mentor);
+
+    await axios.post("/api/event", formData).then((res)=>{
+      console.log(res.data)
+    }).catch((err)=>{
+      console.log(err);
+    })
+  };
+
+  console.log(data);
   return (
     <>
       {/* <!-- Button trigger modal --> */}
@@ -35,31 +72,54 @@ const AddEvent = () => {
               ></button>
             </div>
             <div className="modal-body">
-                
-              <form>
+              <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                   <label htmlFor="name" className="form-label">
                     Event Name
                   </label>
-                  <input type="text" name="name" className="form-control" />
+                  <input
+                    type="text"
+                    name="name"
+                    value={data.name}
+                    onChange={handleChange}
+                    className="form-control"
+                  />
                 </div>
                 <div className="mb-3">
                   <label htmlFor="date" className="form-label">
                     Date
                   </label>
-                  <input type="text" name="date" className="form-control" />
+                  <input
+                    type="text"
+                    name="date"
+                    value={data.date}
+                    onChange={handleChange}
+                    className="form-control"
+                  />
                 </div>
                 <div className="mb-3">
                   <label htmlFor="time" className="form-label">
                     Time
                   </label>
-                  <input type="text" name="time" className="form-control" />
+                  <input
+                    type="text"
+                    name="time"
+                    value={data.time}
+                    onChange={handleChange}
+                    className="form-control"
+                  />
                 </div>
                 <div className="mb-3">
                   <label htmlFor="mentor" className="form-label">
                     Mentor
                   </label>
-                  <input type="text" name="mentor" className="form-control" />
+                  <input
+                    type="text"
+                    name="mentor"
+                    value={data.mentor}
+                    onChange={handleChange}
+                    className="form-control"
+                  />
                 </div>
 
                 <div className="mb-3">
@@ -68,6 +128,8 @@ const AddEvent = () => {
                   </label>
                   <textarea
                     name="decs"
+                    value={data.decs}
+                    onChange={handleChange}
                     className="form-control"
                     aria-label="With textarea"
                   ></textarea>
@@ -79,16 +141,14 @@ const AddEvent = () => {
                   <input
                     className="form-control"
                     name="image"
+                    value={data.img}
+                    onChange={handleChange}
                     type="file"
                     id="formFile"
                   />
                 </div>
                 <div className="mb-3 form-check">
-                  <input
-                    type="checkbox"
-                    className="form-check-input"
-                    required
-                  />
+                  <input type="checkbox" className="form-check-input" required />
                   <label className="form-check-label" htmlFor="exampleCheck1">
                     Check me out
                   </label>
