@@ -1,11 +1,13 @@
+// Event.jsx
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 import "./Event.scss";
-import Card from "./Components/Card";
+import Card from "./Components/EventCard/Card";
+import AddEvent from "./Components/AddEvent/AddEvent";
 
 const Event = () => {
-  const [Events, setEvents] = useState();
+  const [events, setEvents] = useState([]);
 
   useEffect(() => {
     axios
@@ -18,38 +20,35 @@ const Event = () => {
       });
   }, []);
 
-  if (!Events) {
+  if (!events) {
     return (
       <div>
-        <h1>loadion..</h1>
+        <h1>Loading...</h1>
       </div>
     );
   }
-  if (Events) {
-    return (
-      <div>
-        <div className="event-container">
-          <header className="event-header">
-            <h1>Upcoming Events</h1>
-            <p className="sub-heading">Explore and Join Our Exciting Events</p>
-          </header>
 
-          <section className="event-list">
-            <div className="cards">
-              {Events.map((event) => {
-                return (
-                  <Card
-                    key={event._id}
-                    eventDetails={event}
-                  />
-                );
-              })}
+  return (
+    <>
+      <section className="event-list">
+        <div>
+          <section className="py-5">
+          <div className="d-flex align-items-end flex-column mx-5 my-2">
+          <AddEvent/>
+</div>
+            <h2 className="text-center">Events Organize By YAOT</h2>
+            <div className="container px-4 px-lg-5 mt-5">
+              <div className="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                {events.map((event) => (
+                  <Card key={event._id} eventDetails={event} />
+                ))}
+              </div>
             </div>
           </section>
         </div>
-      </div>
-    );
-  }
+      </section>
+    </>
+  );
 };
 
 export default Event;

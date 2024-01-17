@@ -1,22 +1,24 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './Navbar.scss';
+import React from "react";
+import { NavLink, Link } from "react-router-dom";
+import "./Navbar.scss";
 
 const Navbar = () => {
   return (
-    <nav className="navbar">
-      <Link to="/" className="nav-link">Home</Link>
-      <Link to="/about" className="nav-link">About</Link>
-      <Link to="/event" className="nav-link">Event</Link>
-      <Link to="/contact" className="nav-link">Contact</Link>
-      <Link to="/certificate" className="nav-link">Certificate</Link>
-      <Link to="/xyg" className="nav-link">XYG</Link>
-
-      <div className="auth-buttons">
-        <button className="login-button">Login</button>
-        <button className="logout-button">Logout</button>
-      </div>
-    </nav>
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div className="container px-5">
+                <Link className="navbar-brand" to="/">YAOT</Link>
+                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span className="navbar-toggler-icon"></span></button>
+                <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li className="nav-item"><NavLink className="nav-link" aria-current="page" to="/">Home</NavLink></li>
+                        <li className="nav-item"><NavLink className="nav-link" to="/event">Event</NavLink></li>
+                        <li className="nav-item"><NavLink className="nav-link" to="/about">About</NavLink></li>
+                        <li className="nav-item"><NavLink className="nav-link" to="/contact">Contact</NavLink></li>
+                        <li className="nav-item"><NavLink className="nav-link" to="/certificate">Certificate</NavLink></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
   );
 };
 

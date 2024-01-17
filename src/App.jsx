@@ -1,7 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 
-import NavBar from "./components/navBar/NavBar.jsx";
 
 import Home from "./Pages/Home/Home.jsx";
 import Event from "./Pages/Event/Event.jsx";
@@ -12,11 +11,13 @@ import PageNotFound from "./Pages/PageNotFound/PageNotFound.jsx";
 import CertificatePage from "./Pages/Certificate/CertificatePage/CertificatePage.jsx";
 import EventDetails from "./Pages/Event/EventDetails/EventDetails.jsx";
 import EventRegestration from "./Pages/Event/EventRegestration/EventRegestration.jsx";
+import Navbar from "./components/NavBar/NavBar.jsx";
+import Footer from "./components/Footer/Footer.jsx";
 
 const App = () => {
   return (
     <>
-      <NavBar />
+      <Navbar />
 
       <Routes>
         <Route path="/" element={<Home />} />
@@ -33,6 +34,7 @@ const App = () => {
 
         <Route path="/*" element={<PageNotFound />} />
       </Routes>
+      <Footer/>
     </>
   );
 };
