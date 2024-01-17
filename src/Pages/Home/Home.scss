@@ -1,9 +1,37 @@
 // Home.scss
 
+$primary-clr: #262967;
+$secondary-clr: #ED1C29;
+
+
+
+@mixin flexprop{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin setimg($pos){
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+  position: $pos;
+}
+
+.bg-img{
+  @include setimg(relative);
+
+}
+
+.over-img{
+  @include setimg(absolute);
+
+}
+
 .home-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 40px;
+  display: flex;
+  flex-direction: column;
+
 }
 
 .hero-section {
