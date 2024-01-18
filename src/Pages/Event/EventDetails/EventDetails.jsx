@@ -37,7 +37,6 @@ const EventDetails = () => {
     return <NotFound notFound="event" />;
   }
 
-  console.log(Event.result);
   const { name, mentor, status, decs,image } = Event.result;
 
   const title = name;
@@ -55,9 +54,11 @@ const EventDetails = () => {
                    <h5>Mentro : {mentor}</h5>
                     <p className="lead">{decs + `Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis obcaecati ex, aspernatur doloribus natus pariatur repellat perspiciatis molestias cupiditate recusandae nemo dolorum expedita quos ullam officia qu`}</p>
                     <div className="d-flex">
+                            <Link to={`register?image=${image}`}>
                         <button  type="button" className="btn btn-primary" >
-                            <Link to={`register?image=${image}`}>Regester Now</Link>
+                              Regester Now
                         </button>
+                              </Link>
                     </div>
                 </div>
             </div>

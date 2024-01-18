@@ -4,7 +4,6 @@ import "./NotFound.scss";
 
 /* eslint-disable react/prop-types */
 const NotFound = (props) => {
-console.log("props: ",props);
   return (
     <div className="not-found-container">
       <div className="not-found-content">

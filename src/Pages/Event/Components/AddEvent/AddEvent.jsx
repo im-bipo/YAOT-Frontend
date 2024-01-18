@@ -1,7 +1,25 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+/* eslint-disable react/prop-types */
+const Status = ({ response }) => {
+  if (response?.status === 200) {
+    const currentUrl = window.location.origin+window.location.pathname
+    
+    const newUrl = currentUrl + "?newEventAdded=true";
+    window.location.href = newUrl;
+  }
+  if (response?.status === 400) {
+    return (
+      <>
+        <h6 className="text-center text-danger">Failed</h6>
+        <h6 className="text-center text-danger">{response.data.errorCause}</h6>
+      </>
+    );
+  }
+};
 const AddEvent = () => {
+  const [response, setResponce] = useState(null);
   const [data, setData] = useState({
     name: "",
     date: "",
@@ -35,21 +53,11 @@ const AddEvent = () => {
 
     await axios
       .post("/api/event", formData)
-      .then((res) => {
-        console.log(res.data);
-      })
+      .then((res) => setResponce({ data: res.data, status: res.status }))
       .catch((err) => {
-        if(err?.response.data)
-        {
-          console.log(err?.response.data);
-        }
-        else{
-          console.log(err);
-        }
+        setResponce({ data: err.response.data, status: err.response.status });
       });
   };
-
-  console.log(data);
   return (
     <>
       {/* <!-- Button trigger modal --> */}
@@ -94,6 +102,7 @@ const AddEvent = () => {
                     value={data.name}
                     onChange={handleChange}
                     className="form-control"
+                    required
                   />
                 </div>
                 <div className="mb-3">
@@ -106,6 +115,7 @@ const AddEvent = () => {
                     value={data.date}
                     onChange={handleChange}
                     className="form-control"
+                    required
                   />
                 </div>
                 <div className="mb-3">
@@ -118,6 +128,7 @@ const AddEvent = () => {
                     value={data.time}
                     onChange={handleChange}
                     className="form-control"
+                    required
                   />
                 </div>
                 <div className="mb-3">
@@ -130,6 +141,7 @@ const AddEvent = () => {
                     value={data.mentor}
                     onChange={handleChange}
                     className="form-control"
+                    required
                   />
                 </div>
 
@@ -143,6 +155,7 @@ const AddEvent = () => {
                     onChange={handleChange}
                     className="form-control"
                     aria-label="With textarea"
+                    required
                   ></textarea>
                 </div>
                 <div className="mb-3">
@@ -155,7 +168,9 @@ const AddEvent = () => {
                     value={data.img}
                     onChange={handleChange}
                     type="file"
+                    accept="image/*"
                     id="formFile"
+                    required
                   />
                 </div>
                 <div className="mb-3 form-check">
@@ -171,6 +186,7 @@ const AddEvent = () => {
                 <button type="submit" className="btn btn-primary">
                   Submit
                 </button>
+                <Status response={response} />
               </form>
             </div>
           </div>
