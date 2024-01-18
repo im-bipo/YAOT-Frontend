@@ -1,19 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Card.scss";
+import { config } from "../../../../../config";
+
 
 /* eslint-disable react/prop-types */
 const Card = ({ eventDetails }) => {
   const title = eventDetails.name;
   const status = eventDetails.status || "Finished";
   const mentor = eventDetails.mentor || "Ram Thapa";
-  const img = "https://rb.gy/asxnq1";
+  const imageUrl = `${config.serverUrl}/${eventDetails.image}`
   return (
     <>
       <Link to={title}>
         <div className="col mb-5">
           <div className="card h-100">
-            <img className="card-img-top" src={img} alt={title} />
+            <img className="card-img-top" src={imageUrl} alt={title} />
             <div className="card-body p-4">
               <div className="text-left">
                 <h5 className="fw-bolder">{title}</h5>

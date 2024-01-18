@@ -30,12 +30,23 @@ const AddEvent = () => {
     formData.append("date", data.date);
     formData.append("time", data.time);
     formData.append("mentor", data.mentor);
+    formData.append("decs", data.decs);
+    formData.append("thumbnailImage", data.image);
 
-    await axios.post("/api/event", formData).then((res)=>{
-      console.log(res.data)
-    }).catch((err)=>{
-      console.log(err);
-    })
+    await axios
+      .post("/api/event", formData)
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        if(err?.response.data)
+        {
+          console.log(err?.response.data);
+        }
+        else{
+          console.log(err);
+        }
+      });
   };
 
   console.log(data);
@@ -148,7 +159,11 @@ const AddEvent = () => {
                   />
                 </div>
                 <div className="mb-3 form-check">
-                  <input type="checkbox" className="form-check-input" required />
+                  <input
+                    type="checkbox"
+                    className="form-check-input"
+                    required
+                  />
                   <label className="form-check-label" htmlFor="exampleCheck1">
                     Check me out
                   </label>
