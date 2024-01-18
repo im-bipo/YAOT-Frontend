@@ -5,7 +5,6 @@ import { useParams } from "react-router";
 
 const CertificatePage = () => {
   const { certificateId } = useParams();
-  // console.log(params.certificateId);
   return (
     <section className="no-scroll">
       <div className="certificate-container">
