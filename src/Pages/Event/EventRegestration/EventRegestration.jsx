@@ -1,14 +1,16 @@
 // EventRegistration.jsx
 import React from "react";
+import { useSearchParams } from "react-router-dom";
 import "./EventRegestration.scss";
 
 import { useParams } from "react-router";
+import { config } from "../../../../config";
 
 const EventRegistration = () => {
   const { eventName } = useParams();
-  console.log(eventName);
 
-  const imageUrl = "https://rb.gy/asxnq1";
+const [queryParameters] = useSearchParams()
+  const imageUrl = `${config.serverUrl}/${queryParameters.get('image')}`;
 
   return (
     <>
