@@ -13,6 +13,8 @@ import EventDetails from "./Pages/Event/EventDetails/EventDetails.jsx";
 import EventRegestration from "./Pages/Event/EventRegestration/EventRegestration.jsx";
 import Navbar from "./components/NavBar/NavBar.jsx";
 import Footer from "./components/Footer/Footer.jsx";
+import SignUp from "./Pages/SignUp/SignUp.jsx";
+import Login from "./Pages/Login/Login.jsx";
 
 const App = () => {
   return (
@@ -30,7 +32,10 @@ const App = () => {
         <Route path="/contact" element={<Contact />} />
 
         <Route path="/certificate" element={<Certificate />} />
-        <Route path="/certificate/:certificateId" element={<CertificatePage />} />
+        <Route path="/certificate/verify/:certificateId" element={<CertificatePage />} />
+
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
 
         <Route path="/*" element={<PageNotFound />} />
       </Routes>
