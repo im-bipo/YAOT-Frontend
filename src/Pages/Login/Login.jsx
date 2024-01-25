@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { UserContext } from "../../../context/userDetails";
 const Login = () => {
 
-    // console.log(user);
+const {setUser} = useContext(UserContext)
 
   const [form, setForm] = useState({
     name: "",
@@ -24,14 +25,14 @@ const Login = () => {
     await axios
       .post("/api/user/login", form)
       .then((res) => {
-        setError('')
         console.log(res.data);
-
-        window.location.replace('/')
+        setError('')
+        setUser({...res.data.user, login : true})
+        window.location.replace(`/?authActivity=true&authMsg=${res.data.msg}`)
       })
       .catch((err) => {
-        console.log('error',err?.response?.data);
-        setError(err?.response?.data.msg)
+        console.log('error',err.response.data);
+        setError(err.response.data.msg)
       });
   };
 

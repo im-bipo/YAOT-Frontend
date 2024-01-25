@@ -1,10 +1,9 @@
 // Home.jsx
-import React, {useContext} from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
 import "./Home.scss";
 import ClosableAlert from "../../components/UI/ClosableAlert";
-import { UserContext } from "../../../context/userDetails";
 
 
 
@@ -12,9 +11,6 @@ const Home = () => {
   const [data] = useSearchParams();
   const isFromAuth = data.get("authActivity") === "true" || false;
   const authMsg = data.get("authMsg");
-
-    const user = useContext(UserContext)
-    console.log(user);
 
   return (
     <>
