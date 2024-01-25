@@ -9,7 +9,7 @@ const Navbar = () => {
   const logOutUser = () => {
     document.cookie = "uid=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     userDetails.setUser({ login: false });
-    window.location.replace('/login')
+    window.location.replace("/login");
   };
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -55,6 +55,13 @@ const Navbar = () => {
                 Certificate
               </NavLink>
             </li>
+            {userDetails.user.userRole === "Admin" && (
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/admin">
+                  Admin
+                </NavLink>
+              </li>
+            )}
             {!userDetails.user.login && (
               <li className="nav-item">
                 <NavLink className="nav-link" to="/login">
@@ -79,13 +86,6 @@ const Navbar = () => {
                     Log Out
                   </li>
                 </ul>
-              </li>
-            )}
-            {userDetails.user.userRole === "Admin" && (
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/admin">
-                  Admin
-                </NavLink>
               </li>
             )}
           </ul>
