@@ -10,6 +10,7 @@ const Navbar = () => {
     document.cookie = "uid=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     userDetails.setUser({ login: false });
     window.location.replace("/login");
+    return 
   };
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">

@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 
 
 import Home from "./Pages/Home/Home.jsx";
+import Admin from "./Pages/Admin/Admin.jsx";
 import Event from "./Pages/Event/Event.jsx";
 import Contact from "./Pages/Contact/Contact.jsx";
 import About from "./Pages/About/About.jsx";
@@ -16,6 +17,11 @@ import Footer from "./components/Footer/Footer.jsx";
 import SignUp from "./Pages/SignUp/SignUp.jsx";
 import Login from "./Pages/Login/Login.jsx";
 
+import NewEvent from "./Pages/Admin/Pages/Event/NewEvent.jsx";
+import EventDetails_Admin from "./Pages/Admin/Pages/Event/EventDetails_Admin.jsx";
+import UserDetails from "./Pages/Admin/Pages/Users/UserDetails.jsx";
+import Certificate_Admin from "./Pages/Admin/Pages/Certificate/Certificate_Admin.jsx";
+
 const App = () => {
   return (
     <>
@@ -24,6 +30,12 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/admin/add event" element={<NewEvent />} />
+        <Route path="/admin/view event" element={<EventDetails_Admin />} />
+        <Route path="/admin/view users" element={<UserDetails />} />
+        <Route path="/admin/certificate" element={<Certificate_Admin />} />
 
         <Route path="/event" element={<Event />} />
         <Route path="/event/:eventName" element={<EventDetails />} />
