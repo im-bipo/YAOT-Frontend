@@ -6,14 +6,15 @@ import { useSearchParams } from "react-router-dom";
 import "./Event.scss";
 import Card from "./Components/EventCard/Card";
 import AddEvent from "./Components/AddEvent/AddEvent";
-import {NewEventAddedPopUp} from './Components/NewEventAddedPopUp/NewEventAddedPopUp'
+import { NewEventAddedPopUp } from "./Components/NewEventAddedPopUp/NewEventAddedPopUp";
+import NotFound from "../../components/NotFound/NotFound";
 const Event = () => {
   const [events, setEvents] = useState([]);
 
   //show popup when new event is added
   const [data] = useSearchParams();
-  const newEventAdded = data.get("newEventAdded") || 'false'
-  
+  const newEventAdded = data.get("newEventAdded") || "false";
+
   //fetch all event
   useEffect(() => {
     axios
@@ -21,6 +22,11 @@ const Event = () => {
       .then((res) => {
         setEvents(res.data);
       })
+      .catch((err) => {
+        console.log(err.response.data);
+        if(err.response.status === 401)
+        setEvents({unauthorized : true})
+      });
   }, []);
 
   if (!events) {
@@ -30,13 +36,20 @@ const Event = () => {
       </div>
     );
   }
+  if(events?.unauthorized){
+    return(
+      <>
+      <NotFound status='401' message = 'Unauthorized'/>
+      </>
+    )
+  }
+
   return (
     <>
       <section className="event-list">
-
         <div>
           <section className="py-5">
-        <NewEventAddedPopUp newEvent={newEventAdded} />
+            <NewEventAddedPopUp newEvent={newEventAdded} />
             <div className="d-flex align-items-end flex-column mx-5 my-2">
               <AddEvent />
             </div>

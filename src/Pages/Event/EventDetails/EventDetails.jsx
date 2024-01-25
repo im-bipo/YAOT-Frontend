@@ -31,7 +31,7 @@ const EventDetails = () => {
     );
   }
   if (Event === "noData") {
-    return <NotFound notFound="event" />;
+    return <NotFound message="event" />;
   }
 
   const { name, mentor, status, decs,image } = Event.result;

@@ -6,9 +6,8 @@ import NotFound from '../../components/NotFound/NotFound';
 const PageNotFound = () => {
   return (
     <NotFound 
-    notFound='page'
+    message='Oops! Page not found'
     />
-    // <h1>hui</h1>
   );
 };
 
