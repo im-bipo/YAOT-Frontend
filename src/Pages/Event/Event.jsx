@@ -21,9 +21,6 @@ const Event = () => {
       .then((res) => {
         setEvents(res.data);
       })
-      .catch((err) => {
-        console.log(err);
-      });
   }, []);
 
   if (!events) {

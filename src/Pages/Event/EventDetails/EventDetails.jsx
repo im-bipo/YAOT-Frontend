@@ -21,9 +21,6 @@ const EventDetails = () => {
           setEvent(res.data);
         } else setEvent("noData");
       })
-      .catch((err) => {
-        console.log(err);
-      });
   }, [eventName]);
 
   if (!Event) {

@@ -25,13 +25,11 @@ const {setUser} = useContext(UserContext)
     await axios
       .post("/api/user/login", form)
       .then((res) => {
-        console.log(res.data);
         setError('')
         setUser({...res.data.user, login : true})
         window.location.replace(`/?authActivity=true&authMsg=${res.data.msg}`)
       })
       .catch((err) => {
-        console.log('error',err.response.data);
         setError(err.response.data.msg)
       });
   };

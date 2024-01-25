@@ -8,9 +8,7 @@ export const UserProvider = (props) => {
   );
 
   useEffect(() => {
-    console.log(user);
     localStorage.setItem("yaot-user-details", JSON.stringify(user));
-    console.log("local data updated");
   }, [user]);
 
   return (

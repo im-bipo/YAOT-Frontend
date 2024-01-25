@@ -7,12 +7,10 @@ const Navbar = () => {
   const userDetails = useContext(UserContext);
 
   const logOutUser = () => {
-    console.log("log out");
     document.cookie = "uid=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     userDetails.setUser({ login: false });
     window.location.replace('/login')
   };
-  //   console.log(userDetails.user);
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container px-5">
