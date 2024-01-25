@@ -23,7 +23,6 @@ const Event = () => {
         setEvents(res.data);
       })
       .catch((err) => {
-        console.log(err.response.data);
         if(err.response.status === 401)
         setEvents({unauthorized : true})
       });
