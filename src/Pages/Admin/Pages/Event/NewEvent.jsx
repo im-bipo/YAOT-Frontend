@@ -2,26 +2,22 @@ import React, { useState } from "react";
 import axios from "axios";
 import TextEditor from "./Components/TextEditor";
 
-/* eslint-disable react/prop-types */
-// const Status = ({ response }) => {
-//   if (response?.status === 200) {
-//     const currentUrl = window.location.origin + window.location.pathname;
-
-//     const newUrl = currentUrl + "?newEventAdded=true";
-//     window.location.href = newUrl;
-//   }
-//   if (response?.status === 400) {
-//     return (
-//       <>
-//         <h6 className="text-center text-danger">Failed</h6>
-//         <h6 className="text-center text-danger">{response.data.errorCause}</h6>
-//       </>
-//     );
-//   }
-// };
+const Status = ({ response }) => {
+  if (response?.status === 201) {
+    window.location.href = '/event';
+  }
+  if (response?.status === 400) {
+    return (
+      <>
+        <h6 className="text-center text-danger">Failed</h6>
+        <h6 className="text-center text-danger">{response.data.msg}</h6>
+      </>
+    );
+  }
+};
 
 const NewEvent = () => {
-  const [response, setResponce] = useState(null);
+  const [response, setResponce] = useState("");
 
   const [data, setData] = useState({
     name: "",
@@ -50,28 +46,26 @@ const NewEvent = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-  
+
     Object.keys(data).forEach((key) => {
       formData.append(key, data[key]);
     });
 
-
     await axios
       .post("/api/event", formData)
       .then((res) => {
-        setResponce({ data: res.data, status: res.status });
-        console.log(response);
+        setResponce({ msg: res.data.msg, status: res.status });
+
       })
       .catch((err) => {
         setResponce({ data: err.response.data, status: err.response.status });
-        console.log(response);
       });
   };
   return (
     <>
       <div className="container my-4">
         <h2 className="text-center">Add New Event</h2>
-        <form className="row g-3" onSubmit={handleSubmit}>
+        <form className="row g-3" onSubmit={handleSubmit} id="newEventForm">
           <div className="col-md-12">
             <label htmlFor="Name" className="form-label">
               Event Name
@@ -226,6 +220,7 @@ const NewEvent = () => {
             </button>
           </div>
         </form>
+        <Status response={response}/>
       </div>
     </>
   );
