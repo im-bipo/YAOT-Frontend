@@ -11,8 +11,10 @@
   },
   "dependencies": {
     "axios": "^1.6.5",
+    "froala-editor": "^4.1.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-froala-wysiwyg": "^4.1.4",
     "react-router-dom": "^6.21.2",
     "scss": "^0.2.4"
   },
