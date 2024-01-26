@@ -50,23 +50,11 @@ const NewEvent = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-    
-    // formData.append("name", data.name);
-    // formData.append("dateStart", data.dateStart);
-    // formData.append("dateEnd", data.dateEnd);
-    // formData.append("timeStart", data.timeStart);
-    // formData.append("timeEnd", data.timeEnd);
-    // formData.append("mentorName", data.mentorName);
-    // formData.append("mentorField", data.mentorField);
-    // formData.append("mentorSocialLink", data.mentorSocilaLink);
-    // formData.append("thumbnailImage", data.thumbnailImage);
-    // formData.append("description", data.description);
-
+  
     Object.keys(data).forEach((key) => {
       formData.append(key, data[key]);
     });
 
-    console.log(formData);
 
     await axios
       .post("/api/event", formData)
