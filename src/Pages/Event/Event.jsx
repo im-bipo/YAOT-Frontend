@@ -1,18 +1,13 @@
 // Event.jsx
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useSearchParams } from "react-router-dom";
 
 import "./Event.scss";
 import Card from "./Components/EventCard/Card";
-import { NewEventAddedPopUp } from "./Components/NewEventAddedPopUp/NewEventAddedPopUp";
 import NotFound from "../../components/NotFound/NotFound";
 const Event = () => {
   const [events, setEvents] = useState([]);
 
-  //show popup when new event is added
-  const [data] = useSearchParams();
-  const newEventAdded = data.get("newEventAdded") || "false";
 
   //fetch all event
   useEffect(() => {

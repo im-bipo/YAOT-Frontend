@@ -2,14 +2,17 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 
 import Home from "./Pages/Home/Home.jsx";
+
 import Event from "./Pages/Event/Event.jsx";
+import EventDetails from "./Pages/Event/EventDetails/EventDetails.jsx";
+import EventRegistration from "./Pages/Event/EventRegistration/EventRegistration.jsx";
+
 import Contact from "./Pages/Contact/Contact.jsx";
 import About from "./Pages/About/About.jsx";
 import Certificate from "./Pages/Certificate/Certificate.jsx";
 import PageNotFound from "./Pages/PageNotFound/PageNotFound.jsx";
 import CertificatePage from "./Pages/Certificate/CertificatePage/CertificatePage.jsx";
-import EventDetails from "./Pages/Event/EventDetails/EventDetails.jsx";
-import EventRegestration from "./Pages/Event/EventRegestration/EventRegestration.jsx";
+
 import Navbar from "./components/NavBar/NavBar.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import SignUp from "./Pages/SignUp/SignUp.jsx";
@@ -23,6 +26,7 @@ import Certificate_Admin from "./Pages/Admin/Pages/Certificate/Certificate_Admin
 
 //layouts
 import AdminLayout from "./layouts/AdminLayout/AdminLayout.jsx";
+import EventDetailsLayout from "./layouts/EventDetailsLayout/EventDetailsLayout.jsx";
 
 const App = () => {
   return (
@@ -43,11 +47,10 @@ const App = () => {
         </Route>
 
         <Route path="/event" element={<Event />} />
-        <Route path="/event/:eventName" element={<EventDetails />} />
-        <Route
-          path="/event/:eventName/register"
-          element={<EventRegestration />}
-        />
+        <Route path="/event/:eventName" element={<EventDetailsLayout />}>
+          <Route index path="info"  element={<EventDetails />} />
+          <Route path="registration" element={<EventRegistration />} />
+        </Route>
 
         <Route path="/contact" element={<Contact />} />
 
